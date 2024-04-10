@@ -1,21 +1,26 @@
-"""
-Las primeras versiones de esta función eran con muchas líneas o con más de un recorrido de la estructura, 
-hasta que empecé a ver de cerca la función max, ya que esta me permite encontrar el valor máximo de un 
-iterable (records.items()) con la función opcional "key=" que me permite definir con qué elemento determinará 
-el máximo, implementando la función lambda que se encarga de devolver tanto el elemento para ser procesado 
-por la función "max()" (los goles, ubicados en los valores del diccionario y primera posición de la 
-tupla(item[1][0])) como también guardar el nombre del goleador en cuestión en una lista de 1 elemento.
-"""
+
+
+
+
+
+
+
+
+
+
+
 def obtener_goleador(records):
     goleador, max_goles = max(records.items(), key=lambda item: item[1][0])
     return goleador, max_goles[0]
+
+
 """
 De la misma manera que en el sub-inciso anterior, en este también opté por usar la función max() usando 
 como criterio el resultado de la función lambda que devuelve, por cada elemento del diccionario 
 (principalmente la tupla con todos sus datos), el promedio ponderado de cada jugador.
 """
 def obtener_influyente(records):
-    influyente= max(records.items(), key=lambda item: item[1][0]*1.5+item[1][1]*1.25+item[1][2])
+    influyente= max(records.items(), key=lambda item: (item[1][0]*1.5+item[1][1]*1.25+item[1][2])/3)
     return influyente[0]
 
 """
